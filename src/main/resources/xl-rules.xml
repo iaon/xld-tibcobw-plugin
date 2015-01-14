@@ -19,12 +19,13 @@
             <os-script>
                 <order>70</order>
                 <description expression="true">"Deploy %s to %s" % (deployed.name, deployed.container.name)</description>
+                <!-- <target-host expression="true">deployed.container.host</target-host> -->
                 <script>tibcobw/deploy-artifact</script>
                 <freemarker-context>
                     <targetDeployed expression="true">delta.deployed</targetDeployed>
-                    <command>deploy</command>
+                    <command>upload</command>
                 </freemarker-context>
-                <upload-artifacts>false</upload-artifacts>
+                <upload-artifacts>true</upload-artifacts>
             </os-script>
         </steps>
     </rule>
@@ -86,7 +87,7 @@
                     <targetDeployed expression="true">delta.deployed</targetDeployed>
                     <command>deploy</command>
                 </freemarker-context>
-                <upload-artifacts>false</upload-artifacts>
+                <upload-artifacts>true</upload-artifacts>
             </os-script>
         </steps>
     </rule>

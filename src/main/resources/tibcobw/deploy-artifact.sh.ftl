@@ -8,5 +8,5 @@
 <#assign container=targetDeployed.container />
 <#assign traHome="${container.tibcoHome}/tra/${container.version}"/>
 
-${traHome}/bin/AppManage --propFile ${traHome}/bin/AppManage.tra -${command} -ear ${targetDeployed.file} -app ${targetDeployed.applicationName} -nostart -user ${container.username} -pw ${container.password} -domain ${container.domainPath}
+${traHome}/bin/AppManage --propFile ${traHome}/bin/AppManage.tra -${command} -ear ${deployed.file.name} -app ${targetDeployed.applicationName} -user ${container.username} -pw ${container.password} -domain ${container.domainPath}
 
