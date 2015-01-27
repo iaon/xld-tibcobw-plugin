@@ -9,27 +9,25 @@
 -->
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
 
-    <rule name="tibco.DeployedEar.CREATE_MODIFY" scope="deployed">
+    <rule name="tibco.DeployedConfiguration.CREATE_MODIFY" scope="deployed">
         <conditions>
-            <type>tibco.DeployedEar</type>
+            <type>tibco.DeployedConfiguration</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>
-                <order>70</order>
-                <description expression="true">"Deploy %s to %s" % (deployed.name, deployed.container.name)</description>
-                <!-- <target-host expression="true">deployed.container.host</target-host> -->
-                <script>tibcobw/deploy-artifact</script>
+                <order>71</order>
+                <description expression="true">"Deploy Configuration %s to %s" % (deployed.name, deployed.container.name)</description>
+                <script>custom/tibcobw/deploy-artifact-configuration</script>
                 <freemarker-context>
                     <targetDeployed expression="true">delta.deployed</targetDeployed>
-                    <command>upload</command>
+                    <command>deploy</command>
                 </freemarker-context>
-                <upload-artifacts>true</upload-artifacts>
+                <upload-artifacts>false</upload-artifacts>
             </os-script>
         </steps>
     </rule>
-
 
     <rule name="tibco.DeployedEar.MODIFY_DESTROY" scope="deployed">
         <conditions>
