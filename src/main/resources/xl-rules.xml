@@ -68,6 +68,16 @@
                 </freemarker-context>
                 <upload-artifacts>false</upload-artifacts>
             </os-script>
+            <os-script>
+                <order>35</order>
+                <description expression="true">"Deploy Configuration %s to %s" % (deployed.name, deployed.container.name)</description>
+                <script>tibcobw/deploy-artifact-configuration</script>
+                <freemarker-context>
+                    <targetDeployed expression="true">delta.deployed</targetDeployed>
+                    <command>deploy</command>
+                </freemarker-context>
+                <upload-artifacts>false</upload-artifacts>
+            </os-script>
         </steps>
     </rule>
 
