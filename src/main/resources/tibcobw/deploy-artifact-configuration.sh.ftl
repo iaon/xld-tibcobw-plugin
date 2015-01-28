@@ -46,7 +46,7 @@ cat > $TMPFILE << EOF
 
 EOF
 
-xmlstarlet ed -L  --subnode "/_:application/_:services/_:bw" --type elem -n xi_include \
+xmlstarlet ed -L  --insert "/_:application/_:services/_:bw/_:NVPairs" --type elem -n xi_include \
 	-i //xi_include --type attr -n xmlns:xi -v http://www.w3.org/2003/XInclude     \
 	-i //xi_include --type attr -n href -v $TMPFILE -r //xi_include -v xi:include /tmp/${targetDeployed.applicationName}.xml
 
