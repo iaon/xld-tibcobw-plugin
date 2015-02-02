@@ -91,6 +91,26 @@
         </steps>
     </rule>
 
+    <rule name="tibco.DeployedGeneratedConfiguration.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>tibco.DeployedGeneratedConfiguration</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <order>75</order>
+                <description expression="true">"Deploy Generated Configuration %s to %s" % (deployed.name, deployed.container.name)</description>
+                <script>tibcobw/deploy-artifact-generated-configuration</script>
+                <freemarker-context>
+                    <targetDeployed expression="true">delta.deployed</targetDeployed>
+                    <command>deploy</command>
+                </freemarker-context>
+                <upload-artifacts>false</upload-artifacts>
+            </os-script>
+        </steps>
+    </rule>
+
     <rule name="tibco.tibco.ExecutedEmsScript.CREATE_MODIFY" scope="deployed">
         <conditions>
             <type>tibco.ExecutedEmsScript</type>
