@@ -37,6 +37,7 @@
                 </freemarker-context>
                 <upload-artifacts>false</upload-artifacts>
             </os-script>
+<!--            
             <os-script>
                 <order>78</order>
                 <description expression="true">"Patch TRA file for %s" % (deployed.name)</description>
@@ -47,7 +48,7 @@
                 </freemarker-context>
                 <upload-artifacts>false</upload-artifacts>
             </os-script>
-
+-->
         </steps>
     </rule>
 
@@ -327,7 +328,10 @@
     <rule name="tibco.artifact.stop_and_start" scope="plan">
         <planning-script-path>tibcobw/start_stop_application.py</planning-script-path>
     </rule>
-
+    
+    <rule name="tibco.node.patch_tra" scope="plan">
+        <planning-script-path>tibcobw/patch_tra.py</planning-script-path>
+    </rule>
 
 </rules>
 

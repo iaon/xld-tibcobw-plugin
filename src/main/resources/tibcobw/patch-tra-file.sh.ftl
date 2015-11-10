@@ -29,9 +29,3 @@ if [ -n "$EXT_OPTS" ]; then
    </#if>
 fi
 
-<#if targetDeployed.jmxRemotePort??>
-echo "jmxremote.port=${targetDeployed.jmxRemotePort}" | $SSH_CMD ${targetDeployed.firstNode.host.address} "cat >> ${targetDeployed.firstNode.traPath}/domain/${targetDeployed.container.domainPath}/application/${targetDeployed.applicationName}-modified/${targetDeployed.applicationName}-modified-Process_Archive*.tra "
-<#if targetDeployed.secondNode??>
-echo "jmxremote.port=${targetDeployed.jmxRemotePort}" | $SSH_CMD ${targetDeployed.secondNode.host.address} "cat >> ${targetDeployed.secondNode.traPath}/domain/${targetDeployed.container.domainPath}/application/${targetDeployed.applicationName}-modified/${targetDeployed.applicationName}-modified-Process_Archive*.tra "
-</#if>
-</#if>
