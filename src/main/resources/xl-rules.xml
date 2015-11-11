@@ -330,6 +330,11 @@
     </rule>
 
     <rule name="tibco.node.patch_tra" scope="deployed">
+        <conditions>
+            <type>tibco.DeployedEar</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
         <planning-script-path>tibcobw/patch_tra.py</planning-script-path>
     </rule>
 
