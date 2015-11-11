@@ -10,16 +10,17 @@
 if (delta.operation == "CREATE") or (delta.operation == "MODIFY"):
     deployed = delta.deployed
     container = delta.deployed.container
-    hosts = [ container.firstNode.host ]
+    nodes = [ container.firstNode ]
     if container.secondNode is not None:
-        hosts.append(container.secondNode.host)
-    for host in hosts:
+        nodes.append(container.secondNode)
+    for node in nodes:
         context.addStep(steps.os_script(
-                description = "Patch TRA file for application %s on host %s" % (deployed.applicationName , host),
+                description = "Patch TRA file for application %s on host %s" % (deployed.applicationName , node.host),
                 order=78,
                 script="tra/patch",
                 freemarker_context = {
-                    "targetDeployed" : deployed                    
+                    "targetDeployed" : deployed,
+                    "node" : node
                 }
             ))
 

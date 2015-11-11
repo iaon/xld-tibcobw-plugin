@@ -328,8 +328,8 @@
     <rule name="tibco.artifact.stop_and_start" scope="plan">
         <planning-script-path>tibcobw/start_stop_application.py</planning-script-path>
     </rule>
-    
-    <rule name="tibco.node.patch_tra" scope="plan">
+
+    <rule name="tibco.node.patch_tra" scope="deployed">
         <planning-script-path>tibcobw/patch_tra.py</planning-script-path>
     </rule>
 
